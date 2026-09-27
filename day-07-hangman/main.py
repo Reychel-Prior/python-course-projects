@@ -7,16 +7,25 @@ placeholder = ""
 for letter in chosen_word:
     placeholder += "_"
 
-guess = input("Make your guess: ").lower()
+is_end = False
+guessed_letters = []
 
-# TODO-2: Create a "display" that puts the guess letter in the right positions and _ in the rest of the string.
+while not is_end:
 
-display = ""
+    guess = input("Make your guess: ").lower()
+    display = ""
 
-for letter in chosen_word:
-    if letter == guess:
-        display += letter
-    else:
-        display += "_"
-print(chosen_word)
-print(display)
+    for letter in chosen_word:
+        if letter in guessed_letters:
+            display += letter
+        elif letter == guess:
+            display += letter
+            guessed_letters.append(guess)
+        else:
+            display += "_"
+    print(chosen_word)
+    print(display)
+
+    if "_" not in display:
+        is_end = True
+print("Out of the while loop")
