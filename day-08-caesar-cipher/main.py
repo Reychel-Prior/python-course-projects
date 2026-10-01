@@ -19,12 +19,16 @@ def encrypt(original_text, shift_amount):
     print(f'Encoded result: {encrypted_text}')
 
 def caesar(direction_chosen, original_text, shift_amount):
-    if direction_chosen == 'encode':
-        encrypt(original_text=text, shift_amount=shift)
-    elif direction_chosen == 'decode':
-        decrypt(original_text=text, shift_amount=shift)
-    else:
-        print("Please chose a valid option!")
+    lower_text = original_text.lower()
+    caesar_text = ""
+    if direction_chosen == "decode":
+        shift_amount *= -1
+    for letter in lower_text:
+        letter_index = alphabet.index(letter)
+        shifted_index = (letter_index + shift_amount) % 26
+        caesar_text += alphabet[shifted_index]
+
+    print(f"Here is your {direction_chosen}d text: {caesar_text}")
 
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
                 'v', 'w', 'x', 'y', 'z']
@@ -36,3 +40,6 @@ while should_continue:
     text = input("Type your message:\n").lower()
     shift = int(input("Type the shift number:\n"))
     caesar(direction, text, shift)
+    choice = (input("Do you want to continue? (y/n): ")).lower()
+    if choice == 'n':
+        should_continue = False
