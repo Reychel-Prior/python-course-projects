@@ -1,32 +1,15 @@
-def decrypt(original_text, shift_amount):
-    text_to_decrypt = original_text.lower()
-    decrypted_text = ""
-    for letter in text_to_decrypt:
-        letter_index = alphabet.index(letter)
-        shifted_index = (letter_index - shift_amount) %  26
-        decrypted_text += alphabet[shifted_index]
-
-    print(f'Decoded result: {decrypted_text}')
-
-def encrypt(original_text, shift_amount):
-    text_to_encrypt = original_text.lower()
-    encrypted_text = ""
-    for letter in text_to_encrypt:
-        letter_index = alphabet.index(letter)
-        shifted_index = (letter_index + shift_amount) % 26
-        encrypted_text += alphabet[shifted_index]
-
-    print(f'Encoded result: {encrypted_text}')
-
 def caesar(direction_chosen, original_text, shift_amount):
     lower_text = original_text.lower()
     caesar_text = ""
     if direction_chosen == "decode":
         shift_amount *= -1
     for letter in lower_text:
-        letter_index = alphabet.index(letter)
-        shifted_index = (letter_index + shift_amount) % 26
-        caesar_text += alphabet[shifted_index]
+        if letter in alphabet:
+            letter_index = alphabet.index(letter)
+            shifted_index = (letter_index + shift_amount) % len(alphabet)
+            caesar_text += alphabet[shifted_index]
+        else:
+            caesar_text += letter
 
     print(f"Here is your {direction_chosen}d text: {caesar_text}")
 
