@@ -22,7 +22,9 @@ while should_continue:
     direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
     text = input("Type your message:\n").lower()
     shift = int(input("Type the shift number:\n"))
-    caesar(direction, text, shift)
+
+    caesar(direction_chosen=direction, original_text=text, shift_amount=shift)
+
     choice = (input("Do you want to continue? (y/n): ")).lower()
     if choice == 'n':
         should_continue = False
