@@ -8,6 +8,10 @@ def multiply(n1, n2):
     return n1 * n2
 
 def divide(n1, n2):
+    if n2 == 0:
+        print("You can't divide by 0!")
+        print("Will default to 0.")
+        return 0
     return n1 / n2
 
 operations = {
