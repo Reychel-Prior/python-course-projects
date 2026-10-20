@@ -1,3 +1,5 @@
+import art
+
 def add(n1, n2):
     return n1 + n2
 
@@ -37,5 +39,6 @@ def calculator(first_number):
         calculator(first_number)
 
 
+print(art.logo)
 initial_number = int(input("Type the first number: "))
 calculator(initial_number)
