@@ -17,10 +17,21 @@ operations = {
     "/": divide,
 }
 
-first_number = int(input("Type the first number: "))
-print("+\n-\n*\n/")
-user_choice = input("Pick your operation: ")
-second_number = int(input("Type the second number: "))
+def calculator(first_number):
+    print("+\n-\n*\n/")
+    user_choice = input("Pick your operation: ")
+    second_number = int(input("Type the second number: "))
 
-result = operations[user_choice](first_number, second_number)
-print(f"Here's your operation: {first_number} {user_choice} {second_number} = {result}")
+    result = operations[user_choice](first_number, second_number)
+    print(f"Here's your operation: {first_number} {user_choice} {second_number} = {result}")
+
+    repeat = input("Do you want to keep working with the previous result? (Y/N): ")
+    if repeat == "Y":
+        calculator(result)
+    else:
+        first_number = int(input("Type the first number: "))
+        calculator(first_number)
+
+
+initial_number = int(input("Type the first number: "))
+calculator(initial_number)
