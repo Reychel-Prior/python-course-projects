@@ -23,22 +23,28 @@ operations = {
     "/": divide,
 }
 
-def calculator(first_number):
-    print("+\n-\n*\n/")
-    user_choice = input("Pick your operation: ")
-    second_number = int(input("Type the second number: "))
+def calculator():
+    print(art.logo)
+    should_accumulate = True
+    first_number = int(input("Type the first number: "))
 
-    result = operations[user_choice](first_number, second_number)
-    print(f"Here's your operation: {first_number} {user_choice} {second_number} = {result}")
+    while should_accumulate:
+        for symbol in operations:
+            print(symbol)
 
-    repeat = input("Do you want to keep working with the previous result? (Y/N): ")
-    if repeat == "Y":
-        calculator(result)
-    else:
-        first_number = int(input("Type the first number: "))
-        calculator(first_number)
+        user_choice = input("Pick your operation: ")
+        second_number = int(input("Type the second number: "))
+
+        result = operations[user_choice](first_number, second_number)
+        print(f"Here's your operation: {first_number} {user_choice} {second_number} = {result}")
+
+        repeat = input(f"Do you want to keep working with {result}? (Y/N): ")
+        if repeat == "Y":
+            first_number = result
+        else:
+            should_accumulate = False
+            print("\n" * 20)
+            calculator()
 
 
-print(art.logo)
-initial_number = int(input("Type the first number: "))
-calculator(initial_number)
+calculator()
