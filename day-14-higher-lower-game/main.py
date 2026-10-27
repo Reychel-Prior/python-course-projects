@@ -3,6 +3,7 @@ import art
 import random
 
 def print_information(person):
+    """Takes the account data and returns the printable format"""
     name = person["name"]
     description = person["description"]
     country = person["country"]
