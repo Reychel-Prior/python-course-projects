@@ -22,6 +22,9 @@ def higher_lower():
 
         print(art.logo)
 
+        if score > 0:
+            print("That's correct! Current score: " + str(score))
+
         print("Compare A: " + print_information(contender_a))
         print(f"DEBUG FOLLOWERS FROM A: {contender_a["follower_count"]}")
 
@@ -48,6 +51,8 @@ def higher_lower():
                 contender_a = contender_b
 
         else:
+            print("\n" * 10)
+            print(art.logo)
             print("You lose! Final score: " + str(score))
             still_alive = False
 
