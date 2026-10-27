@@ -12,12 +12,15 @@ def print_information(person):
 def higher_lower():
     score = 0
 
+    # Generate a random account from the game data
     contender_a = random.choice(data)
     followers_a = contender_a["follower_count"]
 
+    # Whether the game will continue
     still_alive = True
 
     while still_alive:
+        # Generate another random account from the game data
         contender_b = random.choice(data)
         followers_b = contender_b["follower_count"]
 
@@ -34,6 +37,7 @@ def higher_lower():
         print("Against B: " + print_information(contender_b))
         print(f"DEBUG FOLLOWERS FROM B: {contender_b["follower_count"]}")
 
+        # Ask user for a guess
         user_choice = input("Who has more followers? Type 'A' or 'B'").lower()
 
         if followers_a > followers_b:
@@ -48,15 +52,18 @@ def higher_lower():
             score += 1
             print("That's correct! Current score: " + str(score))
 
+            # Making account at position b become the next account at position a
             if winner == "b":
                 contender_a = contender_b
 
         else:
+            # Clear screen and game over
             print("\n" * 10)
             print(art.logo)
             print("You lose! Final score: " + str(score))
             still_alive = False
 
+        # Clear the screen
         print("\n"*10)
 
 
