@@ -13,31 +13,45 @@ def higher_lower():
 
     contender_a = random.choice(data)
     followers_a = contender_a["follower_count"]
-    contender_b = random.choice(data)
-    followers_b = contender_b["follower_count"]
 
-    print(art.logo)
-    print("Compare A: " + print_information(contender_a))
-    print(f"DEBUG FOLLOWERS FROM A: {contender_a["follower_count"]}")
-    print(art.vs)
-    print("Against B: " + print_information(contender_b))
-    print(f"DEBUG FOLLOWERS FROM B: {contender_b["follower_count"]}")
-    user_choice = input("Who has more followers? Type 'A' or 'B'").lower()
+    still_alive = True
 
-    if followers_a > followers_b:
-        winner = "a"
-    else:
-        winner = "b"
+    while still_alive:
+        contender_b = random.choice(data)
+        followers_b = contender_b["follower_count"]
 
-    #print("DEBUG WINNER: " + winner)
-    #print("DEBUG USER_CHOICE:" + user_choice)
+        print(art.logo)
 
-    if user_choice == winner:
-        score += 1
-        print("That's correct! Current score: " + str(score))
+        print("Compare A: " + print_information(contender_a))
+        print(f"DEBUG FOLLOWERS FROM A: {contender_a["follower_count"]}")
 
-        if winner == "b":
-            contender_a = contender_b
+        print(art.vs)
 
-    else:
-        print("You lose! Final score: " + str(score))
+        print("Against B: " + print_information(contender_b))
+        print(f"DEBUG FOLLOWERS FROM B: {contender_b["follower_count"]}")
+
+        user_choice = input("Who has more followers? Type 'A' or 'B'").lower()
+
+        if followers_a > followers_b:
+            winner = "a"
+        else:
+            winner = "b"
+
+        #print("DEBUG WINNER: " + winner)
+        #print("DEBUG USER_CHOICE:" + user_choice)
+
+        if user_choice == winner:
+            score += 1
+            print("That's correct! Current score: " + str(score))
+
+            if winner == "b":
+                contender_a = contender_b
+
+        else:
+            print("You lose! Final score: " + str(score))
+            still_alive = False
+
+        print("\n"*10)
+
+
+higher_lower()
