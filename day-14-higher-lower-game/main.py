@@ -8,7 +8,7 @@ def print_information(person):
     country = person["country"]
     return f"{name}, a {description}, from {country}."
 
-
+score = 0
 
 contender_a = random.choice(data)
 followers_a = contender_a["follower_count"]
@@ -24,8 +24,16 @@ print("Against B: " + print_information(contender_b))
 print(f"DEBUG FOLLOWERS FROM B: {contender_b["follower_count"]}")
 user_choice = input("Who has more followers? Type 'A' or 'B'").lower()
 
-if user_choice == "a":
-    if followers_a > followers_b:
-        print("You win")
-    else:
-        print("You lose")
+if followers_a > followers_b:
+    winner = "a"
+else:
+    winner = "b"
+
+#print("DEBUG WINNER: " + winner)
+#print("DEBUG USER_CHOICE:" + user_choice)
+
+if user_choice == winner:
+    score += 1
+    print("That's correct! Current score: " + str(score))
+else:
+    print("You lose! Final score: " + str(score))
