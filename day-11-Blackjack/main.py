@@ -66,6 +66,6 @@ def blackjack():
 wanna_play = True
 
 while wanna_play:
-    blackjack()
+    wanna_play = blackjack()
 
 print("Bye!")
