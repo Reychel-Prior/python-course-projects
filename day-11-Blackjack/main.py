@@ -1,6 +1,6 @@
 import random
 
-cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11, 11, 11, 11, 11, 11, 11]
 
 def blackjack():
     user_play = input("Do you wanna play Blackjack? (Y/N)").lower()
@@ -28,34 +28,43 @@ def blackjack():
         user_cards.append(new_card)
         user_score += new_card
 
+        if user_score > 21:
+            if 11 in user_cards:
+                index = user_cards.index(11)
+                user_cards[index] = 1
+                user_score -= 10
+            else:
+                should_continue = False
+
         print(f"    Your cards: {user_cards}, current score: {user_score}")
         print(f"    Computer's first card: {cpu_cards}")
+
+        if user_score == 21:
+            should_continue = False
 
         if user_score < 21:
             user_continue = input("Type 'y' to get another card, 'n' to pass: ").lower()
             if user_continue == "n":
                 should_continue = False
 
-        if user_score >= 21:
-            if 11 in user_cards:
-                index = user_cards.index(11)
-                user_cards[index] = 1
-            else:
-                should_continue = False
 
-
-    while cpu_score < 17:
-        new_card = random.choice(cards)
-        cpu_cards.append(new_card)
-        cpu_score += new_card
+    if user_score <= 21:
+        while cpu_score < 17:
+            new_card = random.choice(cards)
+            cpu_cards.append(new_card)
+            cpu_score += new_card
 
     print(f"    Your final hand: {user_cards}, final score: {user_score}")
     print(f"    Computer's final hand: {cpu_cards}, final score: {cpu_score}")
 
     if user_score > 21:
         print("You went over 21, you lose!")
+    elif cpu_score > 21:
+        print("The CPU busted! You win!")
     elif user_score == cpu_score:
         print("It's a draw!")
+    elif user_score == 21:
+        print("Blackjack! You win!")
     elif user_score < cpu_score:
         print("You lose!")
     else:
