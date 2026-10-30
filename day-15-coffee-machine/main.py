@@ -31,11 +31,19 @@ resources = {
 }
 
 machine_on = True
+money = 0
+
+def report():
+    pass
+
 
 while machine_on:
     user_choice = input("What would you like? (espresso/latte/cappuccino)")
 
-    if  user_choice == "off":
+    if user_choice == "off":
         machine_on = False
         print("Maintenance mode - Shutting down coffee machine...")
         break
+
+    if user_choice == "report":
+        report()
