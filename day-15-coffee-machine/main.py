@@ -75,5 +75,22 @@ while machine_on:
 
     user_money = (quarters * 0.25) + (dimes * 0.10) + (nickles * 0.05) + (pennies * 0.01)
 
+    drink_price = MENU[user_choice]["cost"]
+    print(drink_price)
+
+    if user_money < drink_price:
+        print("Sorry, that is not enough money! Money refunded.")
+        continue
+
+    if user_money > drink_price:
+        change = user_money - drink_price
+        print("Here is $" + str(round(change, 2)) + " dollars in change.")
+
+    if isinstance(drink_ingredients, dict):
+        for ingredient in drink_ingredients:
+            resources[ingredient] -= drink_ingredients[ingredient]
+
+
+
 
 
