@@ -2,7 +2,7 @@ MENU = {
     "espresso": {
         "ingredients": {
             "water": 50,
-            "coffee": 18,
+            "coffee": 101,
         },
         "cost": 1.5,
     },
@@ -50,12 +50,21 @@ while machine_on:
 
     elif user_choice == "report":
         report()
+        continue
 
     elif user_choice not in MENU:
-        print("Please choose a drink from the menu!")
+        print("Please choose a drink from the menu!\n")
+        continue
 
-    not_enough = ""
-    drink = MENU
-    for item in resources:
-        if user_choice:
-            pass
+    drink_ingredients = MENU[user_choice]["ingredients"]
+
+    if isinstance(drink_ingredients, dict):
+        for ingredient in drink_ingredients:
+            #print(ingredient)
+            #print(drink_ingredients[ingredient]) # PRICE
+
+            if drink_ingredients[ingredient] > resources[ingredient]:
+                print(f"Sorry there is not enough {ingredient}!")
+                continue
+    
+
