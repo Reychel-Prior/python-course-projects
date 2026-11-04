@@ -2,7 +2,7 @@ MENU = {
     "espresso": {
         "ingredients": {
             "water": 50,
-            "coffee": 101,
+            "coffee": 18,
         },
         "cost": 1.5,
     },
@@ -66,5 +66,14 @@ while machine_on:
             if drink_ingredients[ingredient] > resources[ingredient]:
                 print(f"Sorry there is not enough {ingredient}!")
                 continue
-    
+
+    print("==PAYMENT==")
+    quarters = int(input("Insert quarters: "))
+    dimes = int(input("Insert dimes: "))
+    nickles = int(input("Insert nickles: "))
+    pennies = int(input("Insert pennies: "))
+
+    user_money = (quarters * 0.25) + (dimes * 0.10) + (nickles * 0.05) + (pennies * 0.01)
+
+
 
