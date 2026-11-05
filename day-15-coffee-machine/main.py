@@ -37,7 +37,7 @@ def report():
     print("==REPORT==") # BUGGED
     for resource in resources:
         print(f"{resource}: {resources[resource]}")
-        print("Money: " + str(money))
+    print("Money: " + str(money))
 
 
 while machine_on:
