@@ -14,6 +14,7 @@ while is_machine_on:
         is_machine_on = False
     elif user_choice == "report":
         coffee_maker.report()
+        money_machine.report()
     else:
         user_drink = menu.find_drink(user_choice)
         if user_drink is not None:
