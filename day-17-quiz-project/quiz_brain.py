@@ -9,4 +9,6 @@ class QuizBrain:
         q_text = self.question_list[index].text
         q_answer = self.question_list[index].answer
 
-        user_answer = input(f"Q.{index + 1}: {q_text} (True/False)?: ")
+        self.question_number += 1
+
+        user_answer = input(f"Q.{index}: {q_text} (True/False)?: ")
