@@ -5,10 +5,8 @@ class QuizBrain:
         self.question_list = q_list
 
     def next_question(self):
-        index = self.question_number
-        q_text = self.question_list[index].text
-        q_answer = self.question_list[index].answer
+        current_question = self.question_list[self.question_number]
 
         self.question_number += 1
 
-        user_answer = input(f"Q.{index}: {q_text} (True/False)?: ")
+        user_answer = input(f"Q.{self.question_number}: {current_question.text} (True/False)?: ")
